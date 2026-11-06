@@ -1,0 +1,22 @@
+# Only the mod's own code and docs go in the repo.
+# The game ISOs, extracted game files, third-party assets and build output stay local.
+/*
+!/.gitignore
+!/README.md
+!/BUILDING.md
+!/tools/
+!/installer/
+/installer/*
+!/installer/IevanPolkkaPatcher.cs
+!/installer/README.txt
+!/work/
+/work/*
+!/work/unity_bake/
+/work/unity_bake/*
+!/work/unity_bake/Assets/
+/work/unity_bake/Assets/*
+!/work/unity_bake/Assets/Editor/
+/work/unity_bake/Assets/Editor/*
+!/work/unity_bake/Assets/Editor/PspBake.cs
+__pycache__/
+*.pyc
