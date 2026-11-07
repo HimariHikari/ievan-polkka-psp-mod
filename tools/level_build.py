@@ -187,6 +187,11 @@ def billboards(n, rmin, rmax, size, uv_cells, colour, avoid=0.0):
 
 
 # --------------------------------------------------------------------------------------------- build
+LEEK_END = 160.0      # s: last leek key and scene duration, past the end of the PV (~147 s)
+LEEK_ONLY_UNTIL = 66.0  # s: the PV has leeks only in its first leek part (54 s right hand, 62-66 s left hand);
+                        # later clenched-fist stretches of the dance get no leek (their scenes stay, hidden)
+
+
 def build(work, texdir, template, proto, out):
     B = Builder(open(template, 'rb').read(), [open(proto, 'rb').read()])
     textures = []
@@ -251,8 +256,18 @@ def build(work, texdir, template, proto, out):
                      B.obj('igTextureStateAttr', s4=False)]
             aset = B.obj('igAttrSet', s2=f'{pr["name"]}{gi}Mat', s3=-1, s5=0, s7=B.reflist('igNodeList', [geom]),
                          s8=B.reflist('igAttrList', attrs), s9=False)
-            node, dur = B.animated(f'{pr["name"]}{gi}', [aset], (fr - f0) / 30.0, pr['all_pos'][fr],
-                                   pr['all_rotm'][fr], pr['all_scale'][fr])
+            # This file is also PV 27's field, and a field plays every scene on the SONG clock (like the game's
+            # field_pv_05: keys at 0 s, then at 114 s ..., last key at the song end). So key the section in song
+            # time: hidden key at 0, the section's frames at their real times, hidden key at LEEK_END. The keys
+            # next to the long gaps are hidden too, so nothing grows in or lingers.
+            times = fr / 30.0
+            times[0], times[-1] = 0.0, LEEK_END
+            scale = pr['all_scale'][fr].copy()
+            scale[[0, 1, -2, -1]] = 0.001
+            if a >= LEEK_ONLY_UNTIL:
+                scale[:] = 0.001
+            node, dur = B.animated(f'{pr["name"]}{gi}', [aset], times, pr['all_pos'][fr],
+                                   pr['all_rotm'][fr], scale)
             nodes.append(node); duration = max(duration, dur)
         scenes.append(B.obj('igAttrSet', s2='sceneGraph', s3=B.aabox(lo, hi), s5=2,
                             s7=B.reflist('igNodeList', nodes), s8=B.reflist('igAttrList', []), s9=False))

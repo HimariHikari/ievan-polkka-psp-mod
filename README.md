@@ -51,6 +51,11 @@ IevanPolkkaPatcher.exe "C:\path\to\your.iso" ["C:\path\to\output.iso"]
 - PV Mode (watching without notes) follows the game's normal unlock rules. You unlock it by clearing the song.
 - Only tested in PPSSPP so far.
 
+## Changes
+
+- **v1.1**: fixes the leeks. In v1.0 the leek sections never switched off, so extra leeks piled up and flew around, and frozen copies of the leeks floated next to Miku for the whole song. Leeks now show only where the PV has them: about 0:54-1:02 in her right hand, then her left hand until about 1:06. If you installed v1.0, run the v1.1 installer on your original (unmodded) ISO again.
+- **v1.0**: first release.
+
 ## Credits
 
 - Dance motion: Unity humanoid conversion of the Project DIVA Ievan Polkka motion (`project-diva-motion-ievan-polkka` package)

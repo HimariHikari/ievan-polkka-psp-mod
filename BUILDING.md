@@ -78,6 +78,7 @@ Then zip `IevanPolkkaPatcher.exe`, `README.txt` and `IevanPolkkaPatcher.cs` (ins
   - motion goes in songSG #304–307;
   - the level and leeks go in `pve_27` #926;
   - extra cameras go into `sgc00_00_00` #986.
-- **Scripts:** the PV scripts (`pv_27_*.dsc`) get camera cuts, the stage, leek on/off effects, mouth and hand commands. The original note charts are kept.
-- **EBOOT:** one byte unlocks the song on a new save, and PV 27's field list points at the new level.
+- **Scripts:** the PV scripts (`pv_27_*.dsc`) get camera cuts, the level and leek effects, mouth and hand commands. The original note charts are kept.
+- **Stage:** `pve_27` is PV 27's field (`CHANGE_FIELD 1`). A field draws every scene in the file on the song clock, so the leek sections (scenes 2–4) are keyed in song time: a hidden key at 0 s, the section's frames at their real times, and a hidden key at 160 s, the way the game's own `field_pv_05` is keyed. Only the first leek part (54-66 s) is ever shown; the later sections stay in the file, hidden. The `EFFECT`/`EFFECT_OFF` pairs use their own slots (the last `EFFECT` value is the slot that `EFFECT_OFF` names).
+- **EBOOT:** one byte unlocks the song on a new save, and PV 27's field list (originally its 25 slideshow pictures) points at `pve_27`.
 - **Installer:** it carries only the replaced archive entries and the EBOOT byte patches. It checks SHA-1 hashes of the player's files before patching.

@@ -73,9 +73,13 @@ def patch_dsc(raw, no_notes=False, animated_camera=False, camera_cuts=(), stage=
             extra += [(int(round(a * 100000)), 'HAND_ANIM', (hand, FIST_POSE)),
                       (int(round(b * 100000)), 'HAND_ANIM', (hand, 0))]
     if stage:
-        extra.append((0, 'CHANGE_FIELD', (1,)))            # scene 1 of pve_27: the level (static stage)
+        # pve_27 is PV 27's field: it draws EVERY scene in the file (level + leek sections) on the song clock, so
+        # the leek animations are keyed in song time (level_build.py). The EFFECT copies below are then either
+        # hidden (an effect clock starting at 0 sits on the hidden key 0) or identical to the field copy.
+        extra.append((0, 'CHANGE_FIELD', (1,)))
         for sec in LEEK_SECTIONS:                            # scenes 2..N of pve_27: one leek section each
-            extra.append((int(round(sec['start'] * 100000)), 'EFFECT', (sec['effect'], 0, 0, 0, 1)))
+            # EFFECT scene, 0, 0, 0, slot; EFFECT_OFF takes the slot (as in the game's own PVs), so slot = section
+            extra.append((int(round(sec['start'] * 100000)), 'EFFECT', (sec['effect'], 0, 0, 0, sec['effect'])))
             extra.append((int(round(sec['end'] * 100000)), 'EFFECT_OFF', (sec['effect'],)))
     return dsc.write(dsc.merge(out, extra))
 

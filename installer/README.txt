@@ -54,6 +54,16 @@ NOTES
   Make sure it's the Japanese ULJM-05472 release with only the English patch v1.0 on it.
 
 
+CHANGES
+-------
+v1.1  Fixes the leeks. In v1.0 the leek sections never switched off, so extra leeks piled up and
+      flew around, and frozen copies of the leeks floated next to Miku for the whole song.
+      Leeks now show only where the PV has them: about 0:54-1:02 in her right hand, then her
+      left hand until about 1:06. If you installed v1.0, run this installer on your original
+      (unmodded) ISO again.
+v1.0  First release.
+
+
 CREDITS
 -------
 - Dance motion: Unity humanoid conversion of the Project DIVA Ievan Polkka motion
