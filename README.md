@@ -50,7 +50,7 @@ IevanPolkkaPatcher.exe "C:\path\to\your.iso" ["C:\path\to\output.iso"]
 
 ## Known limitations
 
-- **PV Mode doesn't work for Ievan Polkka yet**, even after clearing the song. The game still treats it as the slideshow PV it originally was. To just watch it, play it in Free Play.
+- **PV Mode doesn't work for Ievan Polkka yet**, even after clearing the song, probably because the game still treats it as the slideshow PV it originally was. To just watch it, play it in Free Play.
 - No drag-and-drop yet: pick your ISO with **Browse...**.
 - Windows only: no Android or Mac installer yet.
 - Only tested in PPSSPP so far.
