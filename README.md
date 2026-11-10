@@ -19,16 +19,18 @@ The download is about 2 MB. It does **not** include the game; you apply it to yo
 
 ## What you need
 
-- A Windows 10 or 11 PC to run the installer. You can play the result anywhere.
+- A Windows 10 or 11 PC to run the installer. You can play the result anywhere. There's no installer for Android or Mac yet, so patch on a Windows PC and copy the modded ISO over.
 - Your own ISO of **Hatsune Miku: Project DIVA (Japan, ULJM-05472) with the English patch v1.0** applied.
 
 The installer checks your ISO and refuses anything else, such as another version, an untranslated ISO or an ISO that's already modded. It can't produce a broken file.
+
+If it says **"This ISO isn't the supported version"**, your ISO is a different release or dump. A plain Japanese ISO without the English patch v1.0, another region, a compressed CSO, or an ISO that's already modded won't work. Use the Japanese ULJM-05472 ISO with only the English patch v1.0 applied.
 
 ## How to install
 
 1. Unzip the download and double-click `IevanPolkkaPatcher.exe`.
    - Windows may say **"Windows protected your PC"** because the program isn't signed. Click **More info → Run anyway**.
-2. Click **Browse...** and pick your game ISO.
+2. Click **Browse...** and pick your game ISO. Drag-and-drop isn't supported yet, so use the Browse button. Dropping an ISO onto the exe isn't a reliable way to install.
 3. Check where the modded ISO will be saved. By default it goes next to yours, named `... (Ievan Polkka mod).iso`.
 4. Click **Install mod**. It takes a few seconds to a minute.
 
@@ -48,7 +50,9 @@ IevanPolkkaPatcher.exe "C:\path\to\your.iso" ["C:\path\to\output.iso"]
 
 ## Known limitations
 
-- PV Mode (watching without notes) follows the game's normal unlock rules. You unlock it by clearing the song.
+- **PV Mode doesn't work for Ievan Polkka yet**, even after clearing the song. The game still treats it as the slideshow PV it originally was. To just watch it, play it in Free Play.
+- No drag-and-drop yet: pick your ISO with **Browse...**.
+- Windows only: no Android or Mac installer yet.
 - Only tested in PPSSPP so far.
 
 ## Changes
